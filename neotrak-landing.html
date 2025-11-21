@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeoTrak - Streamlined Security For Developers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);
+            color: #212529;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            padding: 20px 0;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .logo span:first-child {
+            color: #333;
+        }
+
+        .logo span:last-child {
+            background: #007bff;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #495057;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #007bff;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 8px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-outline {
+            background: white;
+            color: #333;
+            border: 1px solid #dee2e6;
+        }
+
+        .btn-outline:hover {
+            background: #f8f9fa;
+        }
+
+        .btn-primary {
+            background: #000;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #333;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 80px 0 100px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .badge::before {
+            content: "⚡";
+            font-size: 16px;
+        }
+
+        .badge::after {
+            content: "→";
+            font-size: 12px;
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        h1 .highlight {
+            color: #6c757d;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #6c757d;
+            margin-bottom: 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 60px;
+        }
+
+        .btn-large {
+            padding: 14px 32px;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        /* Diagram Section */
+        .diagram {
+            position: relative;
+            height: 250px;
+            margin-bottom: 60px;
+        }
+
+        .diagram-center {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+
+        .diagram-center .logo {
+            font-size: 24px;
+        }
+
+        .icon-group {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .icon-group.left {
+            left: 15%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .icon-group.right {
+            right: 15%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .connection-lines {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .dotted-line {
+            stroke: #dee2e6;
+            stroke-width: 2;
+            stroke-dasharray: 4 4;
+            fill: none;
+        }
+
+        /* Features Section */
+        .features {
+            background: white;
+            padding: 30px 0;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .features-grid {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: #495057;
+        }
+
+        .feature-icon {
+            width: 20px;
+            height: 20px;
+            background: #f8f9fa;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 32px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .diagram {
+                height: 200px;
+            }
+
+            .icon-group.left {
+                left: 5%;
+            }
+
+            .icon-group.right {
+                right: 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <span>NEO</span><span>TRAK</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="outdated-software.html">Products</a></li>
+                    <li><a href="#solutions">Solutions</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#about">About us</a></li>
+                    <li><a href="#contact">Contact us</a></li>
+                </ul>
+                <div class="nav-buttons">
+                    <a href="#demo" class="btn btn-outline">Demo</a>
+                    <a href="#signup" class="btn btn-primary">Try for free</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="badge">Real-Time Vulnerability Scanning</div>
+                
+                <h1>
+                    Streamlined Security For Developers<br>
+                    <span class="highlight">Who Value Clarity And Control</span>
+                </h1>
+                
+                <p class="subtitle">Smart protection for fast-paced development teams</p>
+                
+                <div class="cta-buttons">
+                    <a href="#signup" class="btn btn-primary btn-large">Sign up for free</a>
+                    <a href="#demo" class="btn btn-outline btn-large">Get a demo</a>
+                </div>
+
+                <div class="diagram">
+                    <svg class="connection-lines" viewBox="0 0 800 250" preserveAspectRatio="none">
+                        <path class="dotted-line" d="M 150 80 Q 300 80 400 125" />
+                        <path class="dotted-line" d="M 150 170 Q 300 170 400 125" />
+                        <path class="dotted-line" d="M 650 80 Q 500 80 400 125" />
+                        <path class="dotted-line" d="M 650 170 Q 500 170 400 125" />
+                    </svg>
+                    
+                    <div class="icon-group left">
+                        <div class="icon">🐙</div>
+                        <div class="icon">🦊</div>
+                    </div>
+                    
+                    <div class="diagram-center">
+                        <div class="logo">
+                            <span>NEO</span><span>TRAK</span>
+                        </div>
+                    </div>
+                    
+                    <div class="icon-group right">
+                        <div class="icon">🐙</div>
+                        <div class="icon">🦊</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="container">
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">📦</div>
+                        <span>Outdated Software</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🔍</div>
+                        <span>Secrets Detection</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🛡️</div>
+                        <span>Vulnerability Management</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📋</div>
+                        <span>SBOM Generation</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">⚙️</div>
+                        <span>Infrastructure Configuration</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
